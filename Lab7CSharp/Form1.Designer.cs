@@ -44,11 +44,16 @@ namespace Lab7CSharp
             this.extractedPictureBox = new System.Windows.Forms.PictureBox();
             this.browseButton = new System.Windows.Forms.Button();
             this.extractButton = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.drawButton = new System.Windows.Forms.Button();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
+            this.colorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extractedPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +71,7 @@ namespace Lab7CSharp
             // 
             // Start
             // 
-            this.Start.Location = new System.Drawing.Point(54, 215);
+            this.Start.Location = new System.Drawing.Point(24, 185);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(75, 23);
             this.Start.TabIndex = 1;
@@ -76,7 +81,7 @@ namespace Lab7CSharp
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(41, 47);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 2;
@@ -85,7 +90,7 @@ namespace Lab7CSharp
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(41, 103);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 73);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.TabIndex = 3;
@@ -94,7 +99,7 @@ namespace Lab7CSharp
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(41, 159);
+            this.pictureBox3.Location = new System.Drawing.Point(12, 129);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 50);
             this.pictureBox3.TabIndex = 4;
@@ -103,7 +108,7 @@ namespace Lab7CSharp
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(41, 244);
+            this.textBox1.Location = new System.Drawing.Point(12, 214);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 5;
@@ -115,7 +120,7 @@ namespace Lab7CSharp
             // redRadioButton
             // 
             this.redRadioButton.AutoSize = true;
-            this.redRadioButton.Location = new System.Drawing.Point(172, 47);
+            this.redRadioButton.Location = new System.Drawing.Point(136, 17);
             this.redRadioButton.Name = "redRadioButton";
             this.redRadioButton.Size = new System.Drawing.Size(122, 20);
             this.redRadioButton.TabIndex = 6;
@@ -126,7 +131,7 @@ namespace Lab7CSharp
             // greenRadioButton
             // 
             this.greenRadioButton.AutoSize = true;
-            this.greenRadioButton.Location = new System.Drawing.Point(172, 73);
+            this.greenRadioButton.Location = new System.Drawing.Point(136, 47);
             this.greenRadioButton.Name = "greenRadioButton";
             this.greenRadioButton.Size = new System.Drawing.Size(137, 20);
             this.greenRadioButton.TabIndex = 7;
@@ -137,7 +142,7 @@ namespace Lab7CSharp
             // blueRadioButton
             // 
             this.blueRadioButton.AutoSize = true;
-            this.blueRadioButton.Location = new System.Drawing.Point(172, 99);
+            this.blueRadioButton.Location = new System.Drawing.Point(136, 76);
             this.blueRadioButton.Name = "blueRadioButton";
             this.blueRadioButton.Size = new System.Drawing.Size(128, 20);
             this.blueRadioButton.TabIndex = 8;
@@ -147,7 +152,7 @@ namespace Lab7CSharp
             // 
             // originalPictureBox
             // 
-            this.originalPictureBox.Location = new System.Drawing.Point(315, 31);
+            this.originalPictureBox.Location = new System.Drawing.Point(279, 17);
             this.originalPictureBox.Name = "originalPictureBox";
             this.originalPictureBox.Size = new System.Drawing.Size(189, 134);
             this.originalPictureBox.TabIndex = 9;
@@ -155,7 +160,7 @@ namespace Lab7CSharp
             // 
             // extractedPictureBox
             // 
-            this.extractedPictureBox.Location = new System.Drawing.Point(315, 171);
+            this.extractedPictureBox.Location = new System.Drawing.Point(279, 171);
             this.extractedPictureBox.Name = "extractedPictureBox";
             this.extractedPictureBox.Size = new System.Drawing.Size(189, 134);
             this.extractedPictureBox.TabIndex = 10;
@@ -163,9 +168,9 @@ namespace Lab7CSharp
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(172, 125);
+            this.browseButton.Location = new System.Drawing.Point(136, 102);
             this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(75, 23);
+            this.browseButton.Size = new System.Drawing.Size(122, 23);
             this.browseButton.TabIndex = 11;
             this.browseButton.Text = "browseButton";
             this.browseButton.UseVisualStyleBackColor = true;
@@ -173,19 +178,59 @@ namespace Lab7CSharp
             // 
             // extractButton
             // 
-            this.extractButton.Location = new System.Drawing.Point(172, 154);
+            this.extractButton.Location = new System.Drawing.Point(136, 131);
             this.extractButton.Name = "extractButton";
-            this.extractButton.Size = new System.Drawing.Size(75, 23);
+            this.extractButton.Size = new System.Drawing.Size(122, 23);
             this.extractButton.TabIndex = 12;
             this.extractButton.Text = "extractButton";
             this.extractButton.UseVisualStyleBackColor = true;
             this.extractButton.Click += new System.EventHandler(this.extractButton_Click_1);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(712, 31);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(343, 274);
+            this.pictureBox.TabIndex = 13;
+            this.pictureBox.TabStop = false;
+            // 
+            // drawButton
+            // 
+            this.drawButton.Location = new System.Drawing.Point(489, 17);
+            this.drawButton.Name = "drawButton";
+            this.drawButton.Size = new System.Drawing.Size(201, 23);
+            this.drawButton.TabIndex = 14;
+            this.drawButton.Text = "Намалювати";
+            this.drawButton.UseVisualStyleBackColor = true;
+            this.drawButton.Click += new System.EventHandler(this.drawButton_Click);
+            // 
+            // outputTextBox
+            // 
+            this.outputTextBox.Location = new System.Drawing.Point(489, 82);
+            this.outputTextBox.Multiline = true;
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.Size = new System.Drawing.Size(217, 134);
+            this.outputTextBox.TabIndex = 15;
+            // 
+            // colorButton
+            // 
+            this.colorButton.Location = new System.Drawing.Point(489, 47);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(201, 23);
+            this.colorButton.TabIndex = 16;
+            this.colorButton.Text = "colorButton";
+            this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 386);
+            this.Controls.Add(this.colorButton);
+            this.Controls.Add(this.outputTextBox);
+            this.Controls.Add(this.drawButton);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.extractButton);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.extractedPictureBox);
@@ -207,6 +252,7 @@ namespace Lab7CSharp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.extractedPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,6 +275,10 @@ namespace Lab7CSharp
         private System.Windows.Forms.PictureBox extractedPictureBox;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Button extractButton;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Button drawButton;
+        private System.Windows.Forms.TextBox outputTextBox;
+        private System.Windows.Forms.Button colorButton;
     }
 }
 
