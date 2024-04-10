@@ -63,6 +63,12 @@ namespace Lab7CSharp
             // Отримання значення кількості секунд від користувача
             if (int.TryParse(textBox1.Text, out int seconds))
             {
+                if (seconds == 0)
+                {
+                    MessageBox.Show("Інтервал не може бути рівним нулю. Будь ласка, введіть коректне значення.");
+                    return; // Повертаємося, не встановлюючи таймер
+                }
+
                 // Встановлення інтервалу таймера
                 interval = seconds * 1000; // переведення секунд в мілісекунди
                 timer.Interval = interval;
@@ -73,6 +79,7 @@ namespace Lab7CSharp
                 MessageBox.Show("Невірний формат введених секунд. Будь ласка, введіть ціле число.");
             }
         }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -92,6 +99,90 @@ namespace Lab7CSharp
         {
 
         }
+        
 
+        private Bitmap ExtractComponent(Bitmap originalImage, ColorComponent component)
+        {
+            Bitmap extractedImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+            for (int y = 0; y < originalImage.Height; y++)
+            {
+                for (int x = 0; x < originalImage.Width; x++)
+                {
+                    Color pixel = originalImage.GetPixel(x, y);
+                    Color newPixel = Color.Black;
+
+                    switch (component)
+                    {
+                        case ColorComponent.Red:
+                            newPixel = Color.FromArgb(pixel.R, 0, 0);
+                            break;
+                        case ColorComponent.Green:
+                            newPixel = Color.FromArgb(0, pixel.G, 0);
+                            break;
+                        case ColorComponent.Blue:
+                            newPixel = Color.FromArgb(0, 0, pixel.B);
+                            break;
+                    }
+
+                    extractedImage.SetPixel(x, y, newPixel);
+                }
+            }
+
+            return extractedImage;
+        }
+
+        private void browseButton_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Bitmap files (*.bmp)|*.bmp|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Load the selected image
+                Bitmap image = new Bitmap(openFileDialog.FileName);
+                originalPictureBox.Image = image;
+            }
+        }
+
+        private void extractButton_Click_1(object sender, EventArgs e)
+        {
+            if (originalPictureBox.Image != null)
+            {
+                Bitmap originalImage = new Bitmap(originalPictureBox.Image);
+
+                // Extract color components based on selected radio button
+                Bitmap extractedImage = null;
+                if (redRadioButton.Checked)
+                {
+                    extractedImage = ExtractComponent(originalImage, ColorComponent.Red);
+                }
+                else if (greenRadioButton.Checked)
+                {
+                    extractedImage = ExtractComponent(originalImage, ColorComponent.Green);
+                }
+                else if (blueRadioButton.Checked)
+                {
+                    extractedImage = ExtractComponent(originalImage, ColorComponent.Blue);
+                }
+
+                if (extractedImage != null)
+                {
+                    extractedPictureBox.Image = extractedImage;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an image first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+
+    public enum ColorComponent
+    {
+        Red,
+        Green,
+        Blue
+    
+}
 }
